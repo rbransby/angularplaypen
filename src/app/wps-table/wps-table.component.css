@@ -4,11 +4,74 @@
   }
   
   table {
-    width: 1200px;
+    width: 100%;
   }
   .mat-form-field {
     font-size: 14px;
     width: 100%;
+  }
+
+  .redRow {
+    background-color: lightpink
+  }
+
+  .greenRow {
+    background-color: #deffde;
+  }
+
+  .mat-header-row {
+    background-color: #165687;
+    color:white;
+  }
+
+  .mat-header-cell {
+    color:white;
+    font-size:larger;
+  }
+
+  .mat-cell > i {
+    margin-left: 20px;
+  }
+
+  .mat-button-base {
+    margin:0 5px 0 5px;
+    flex: 1;
+    width:150px;
+  }
+
+    .mat-button-base:last-child {
+      margin:0 0 0 5px;
+    }
+
+  .filters {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+
+  .filters > .mat-form-field {
+    flex:1;
+  }
+
+  wps-table-component {
+    margin-top:50px;
+  }
+
+  .slide-suspend-all {
+    flex:1;
+  }
+
+  /deep/ .slide-suspend-all .mat-slide-toggle-bar {
+    background-color:green;
+  }
+
+  /deep/ .slide-suspend-all.mat-checked .mat-slide-toggle-bar {
+    background-color:lightpink;
+  }
+
+  /deep/ .mat-slide-toggle-content {
+    font-size:larger;
   }
 
   

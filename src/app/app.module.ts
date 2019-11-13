@@ -8,6 +8,10 @@ import { WpsTableComponent } from './wps-table/wps-table.component';
 import { MatTableModule } from '@angular/material' 
 import {MatFormFieldModule} from '@angular/material'; 
 import {MatInputModule} from '@angular/material'; 
+import { MomentModule } from 'ngx-moment';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import {MatInputModule} from '@angular/material';
     BrowserAnimationsModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MomentModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

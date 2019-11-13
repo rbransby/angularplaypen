@@ -10,9 +10,11 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: 'wps-table.component.html',
 })
 export class WpsTableComponent {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['permitType', 'permit', 'contact', 'issuedTime','asset','status','comments','pendingOn','securityAck','securityApproved'];
   
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(PERMIT_DATA);
+
+  suspendAllChecked = false;
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -34,9 +36,19 @@ export interface WorkPermit {
   asset: string;
   status: string;
   pendingOn: string;
-  securityAck: boolean;
-  securityApproved: boolean;
+  securityAck?: boolean;
+  securityApproved?: boolean;
 }
+
+const PERMIT_DATA: WorkPermit[] = [
+  {permitType:'KWI-ET2-19-0103', permit:'EGRESS Template 2#', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'CLOSED',pendingOn:'Gas Tester',securityAck:true,securityApproved:null},
+  {permitType:'KWI-CSE-19-0106', permit:'CONFINED SPACE ENTRY PERMIT', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'ACTIVE',pendingOn:'Gas Tester',securityAck:true,securityApproved:null},
+  {permitType:'KWI-HW-19-0116', permit:'HOT WORK PERMIT', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'ACTIVE',pendingOn:'Gas Tester',securityAck:null,securityApproved:null},
+  {permitType:'KWI-CSE-19-0119', permit:'CONFINED SPACE ENTRY PERMIT', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'ACTIVE',pendingOn:'Gas Tester',securityAck:true,securityApproved:null},
+  {permitType:'KWI-FFS-19-0128', permit:'Fall from height Test', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'PENDING FOR APPROVAL',pendingOn:'Gas Tester',securityAck:null,securityApproved:false},
+  {permitType:'KWI-FFH-19-0129', permit:'Fall from height Test', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'ACTIVE',pendingOn:'Gas Tester',securityAck:true,securityApproved:null},
+  {permitType:'KWI-HTWP-19-0178', permit:'Hot Work Test Permit', contact:'',issuedTime:new Date(2019,11,13), asset:'', status:'DRAFT',pendingOn:'Gas Tester',securityAck:true,securityApproved:null},
+]
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
