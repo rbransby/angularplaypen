@@ -90,4 +90,5 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.securityApproved == false ? 'redRow' : (row.securityAck == true ? 'greenRow' : '')"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>

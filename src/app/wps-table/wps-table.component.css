@@ -1,6 +1,5 @@
 .example-container {
-    height: 400px;
-    overflow: auto;
+    
   }
   
   table {
@@ -95,6 +94,6 @@
     margin:0 0 0 5px;
   }
 
-  /deep/ .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  /deep/ .filters .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 2.55em;
   }

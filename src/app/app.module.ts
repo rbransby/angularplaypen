@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatSlideToggleModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

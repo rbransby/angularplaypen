@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table'; 
-
+import {MatPaginator} from '@angular/material/paginator';
 /**
  * @title Table with sticky header
  */
@@ -10,6 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: 'wps-table.component.html',
 })
 export class WpsTableComponent {
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   displayedColumns = ['permitType', 'permit', 'contact', 'issuedTime','asset','status','comments','pendingOn','securityAck','securityApproved'];
   
   dataSource = new MatTableDataSource(PERMIT_DATA);
@@ -18,6 +19,10 @@ export class WpsTableComponent {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
 }
 
