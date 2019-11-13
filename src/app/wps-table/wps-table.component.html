@@ -1,18 +1,42 @@
 
 <div class="filters">
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Permit No, Type, etc">
-  </mat-form-field>
-  <button mat-flat-button color="primary">My Actions</button>
-  <button mat-flat-button color="primary">My Permits</button>
-  <button mat-flat-button color="primary">All Permits</button>
-  <mat-slide-toggle
+    <mat-slide-toggle
           class="slide-suspend-all"
           [color]="color"          
           [disabled]="disabled"
           [(ngModel)]="suspendAllChecked">
         {{suspendAllChecked ? 'Unsuspend All' : 'Suspend All'}}
       </mat-slide-toggle>
+  <mat-card class="siteStatusCard">
+    <mat-card-header>
+      <i class="material-icons">done</i>
+      <mat-card-title>Fire Crew</mat-card-title>
+      <mat-card-subtitle>Available</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="siteStatusCard">
+    <mat-card-header>
+      <i class="material-icons">done</i>
+      <mat-card-title>EROs</mat-card-title>
+      <mat-card-subtitle>Available</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="siteStatusCard" style="background-color:lightpink">
+    <mat-card-header>
+      <i class="material-icons">close</i>
+      <mat-card-title>CSE - Entry Leaders</mat-card-title>
+      <mat-card-subtitle>Available</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  
+</div>
+<div class="filters">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Permit No, Type, etc">
+      </mat-form-field>
+  <button mat-flat-button color="primary">My Actions</button>
+  <button mat-flat-button color="primary">My Permits</button>
+  <button mat-flat-button color="primary">All Permits</button>
 </div>
 <div class="example-container mat-elevation-z2">
     <table mat-table [dataSource]="dataSource">

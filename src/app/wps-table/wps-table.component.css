@@ -37,6 +37,7 @@
     margin:0 5px 0 5px;
     flex: 1;
     width:150px;
+    background-color:#165687;
   }
 
     .mat-button-base:last-child {
@@ -45,13 +46,17 @@
 
   .filters {
     display: flex;
-    margin-top: 50px;
     margin-bottom: 10px;
     justify-content: space-between;
+    height:60px;
+  }
+
+  .filters:first-child {
+    margin-top:100px;
   }
 
   .filters > .mat-form-field {
-    flex:1;
+    flex:3;
   }
 
   wps-table-component {
@@ -59,7 +64,8 @@
   }
 
   .slide-suspend-all {
-    flex:1;
+    flex:3;
+    align-self: center;
   }
 
   /deep/ .slide-suspend-all .mat-slide-toggle-bar {
@@ -74,4 +80,21 @@
     font-size:larger;
   }
 
-  
+  .mat-card-title {
+    font-size: inherit;
+  }
+
+  .siteStatusCard {
+    margin:0 5px 0 5px;
+    width:211px;
+    flex:1;
+    background-color: #deffde;
+  }
+
+  .siteStatusCard:last-child {
+    margin:0 0 0 5px;
+  }
+
+  /deep/ .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 2.55em;
+  }
