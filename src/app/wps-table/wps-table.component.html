@@ -1,12 +1,8 @@
 
 <div class="filters">
-    <mat-slide-toggle
-          class="slide-suspend-all"
-          [color]="color"          
-          [disabled]="disabled"
-          [(ngModel)]="suspendAllChecked">
-        {{suspendAllChecked ? 'Unsuspend All' : 'Suspend All'}}
-      </mat-slide-toggle>
+    
+  <button mat-stroked-button (click)="suspendAll($event)" class="suspendAllButton unsuspended">{{suspended == true ? 'UNSUSPEND ALL' : 'SUSPEND ALL'}}</button>
+  <div class="siteStatus">
   <mat-card class="siteStatusCard">
     <mat-card-header>
       <i class="material-icons">done</i>
@@ -25,22 +21,32 @@
     <mat-card-header>
       <i class="material-icons">close</i>
       <mat-card-title>CSE - Entry Leaders</mat-card-title>
-      <mat-card-subtitle>Available</mat-card-subtitle>
+      <mat-card-subtitle>Unavailable</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
-  
 </div>
-<div class="filters">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Permit No, Type, etc">
-      </mat-form-field>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Permit No, Type, etc">
+</mat-form-field>
+<div class="siteStatus">
   <button mat-flat-button color="primary">My Actions</button>
   <button mat-flat-button color="primary">My Permits</button>
   <button mat-flat-button color="primary">All Permits</button>
 </div>
+</div>
+
 <div class="example-container mat-elevation-z2">
     <table mat-table [dataSource]="dataSource">
-  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> <button mat-button [matMenuTriggerFor]="menu"><i class="actions material-icons">more_horiz</i></button></td>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Acknowledge</button>
+          <button mat-menu-item>Approve</button>
+          <button mat-menu-item>Action 1</button>
+          <button mat-menu-item>Action 2</button>
+        </mat-menu>
+      </ng-container> 
       <!-- Position Column -->
       <ng-container matColumnDef="permitType">
         <th mat-header-cell *matHeaderCellDef>Permit Type</th>
@@ -64,12 +70,9 @@
       </ng-container>
       <ng-container matColumnDef="asset">
         <th mat-header-cell *matHeaderCellDef> Asset </th>
-        <td mat-cell *matCellDef="let element">  </td>
+        <td mat-cell *matCellDef="let element"> {{element.asset}} </td>
       </ng-container>
-      <ng-container matColumnDef="comments">
-        <th mat-header-cell *matHeaderCellDef> Comments </th>
-        <td mat-cell *matCellDef="let element"> <i class="material-icons">comment</i></td>
-      </ng-container>
+      
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef> Permit Status </th>
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
@@ -79,16 +82,20 @@
         <td mat-cell *matCellDef="let element"> {{element.pendingOn}} </td>
       </ng-container>
       <ng-container matColumnDef="securityAck">
-        <th mat-header-cell *matHeaderCellDef> Security Ack </th>
+        <th mat-header-cell *matHeaderCellDef width="90px"> Security Ack </th>
         <td mat-cell *matCellDef="let element"> <i *ngIf="element.securityAck != null" class="material-icons">{{element.securityAck ? 'done' : 'close'}}</i> </td>
       </ng-container>
       <ng-container matColumnDef="securityApproved">
-        <th mat-header-cell *matHeaderCellDef> Security Approval </th>
+        <th mat-header-cell *matHeaderCellDef width="90px"> Security Approval </th>
         <td mat-cell *matCellDef="let element"> <i *ngIf="element.securityApproved != null" class="material-icons">{{element.securityApproved ? 'done' : 'close'}}</i> </td>
-      </ng-container>      
+      </ng-container> 
+      <ng-container matColumnDef="comments">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> <i class="material-icons">comments</i></td>
+      </ng-container>     
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.securityApproved == false ? 'redRow' : (row.securityAck == true ? 'greenRow' : '')"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
   </div>
